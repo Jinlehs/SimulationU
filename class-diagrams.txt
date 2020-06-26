@@ -1,0 +1,83 @@
+Faculty
+    + name: string
+
+    {"name": "Faculty of Science"}
+    https://www.ualberta.ca/science/index.html
+
+
+Department
+    + name: string
+    + faculties: Faculty[]
+
+    {"name": "Psychology", faculties: [{"name": "Faculty of Science"}, {"name": "Faculty of Arts"}]}
+    https://www.ualberta.ca/psychology/index.html
+
+
+SubjectArea
+    + name: string
+    + department_name: string
+
+    {"name": "Science Psychology", "department_name": "Psychology"}
+    https://calendar.ualberta.ca/preview_program.php?catoid=33&poid=37192&returnto=9991#sciencepsychology
+
+
+JuniorCourseLimit
+    + departments: Department[]
+    + credit_limit: number
+
+    {
+        "departments": ["Chemistry", "Physics"],
+        "credit_limit": 6
+    }
+
+
+Degree
+    + name: string
+    + faculty: Faculty
+    + majors: SubjectArea[]
+    + minors: SubjectArea[]
+    + junior_courses: string[]
+    + junior_course_limits: JuniorCourseLimit[]
+
+    {
+        "name": "BSc General Program",
+        "faculty": {"name": "Faculty of Science"},
+        "majors": ["Science Psychology", "Computing Science", ... etc],
+        "minors": ["Non-Science Minors", "Psychology", ... etc],
+        "junior_courses: [],
+        "junior_course_limits: []
+    }
+
+
+Course
+    + name: string
+    + code: string
+    + department: Department
+    + subject_area: SubjectArea
+    + credits: number
+
+    {
+        "name": "Introduction to Computing",
+        "code": "CMPUT 101",
+        "department": {"name": "Computing Science", ... },
+        "subject_area": {"name": "Computing Science", ...},
+        "credits": 3
+    }
+
+
+Plan
+    + student: Student
+    + year: number
+    + degree: Degree
+    + major: SubjectArea
+    + minor: SubjectArea
+    + courses: Course[]
+
+
+Student
+
+Alumni
+
+Events
+
+Jobs
